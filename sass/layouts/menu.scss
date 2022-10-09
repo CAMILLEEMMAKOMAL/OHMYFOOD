@@ -1,0 +1,163 @@
+.menu {
+    position:relative;
+    margin-top:-50px;
+    padding: 40px 15px;
+    border-radius: 35px 35px 0px 0px; //bordur carre blanc menu page 2 
+    background-color: $backgroundColorBloc;// coleur du font des menu
+   
+
+    &__image {
+        width:100%;
+        height:280px;
+    }
+
+    &__header {
+        display:flex;
+        align-items: center;
+        margin-bottom:10px;
+        justify-content: space-between;
+        align-items: flex-start;
+        @include desktop {
+            justify-content: center;
+            column-gap: 33px;// permet de définir la taille des espace entre les colonnes des élément 
+            }
+    }
+
+    &__main-title {// la palette du gout
+        font-family:$fontFamilyTitle;
+        font-size:28px;
+        font-weight:500;
+    }
+
+    &__btn {
+        display:flex;// botton commander 
+        justify-content: center;
+        padding: 40px;
+        background-color:$backgroundColorBloc;
+    }
+
+    &__content {
+        display:grid;
+        grid-template-columns: 1fr;
+        gap:30px;
+        @include desktop {
+        grid-template-columns: repeat(3,1fr);// définir la taille des grid 
+        grid-template-rows: 1fr;
+        grid-gap:35px;
+        }
+    }
+}
+
+
+.menu-group {
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+
+    h3 {
+        margin: 22px 0px;
+        position:relative;//est un élément dont la propriété de position calculée est relative
+        @include greenUnderline($color:$colorTertiary, $width:$greeenUnderlineWidth) // la line vert sous entre /plat/desserts 
+    }
+}
+
+.menu-card {
+    display:flex;
+    overflow:hidden;// overflow propriété raccourcie et (hidden : masqué si depasse 
+    cursor: pointer;// permet de spécifier la forme du curseur à utiliser sur un élément. 
+    border-radius: 20px;// bordure des cartes menus
+    box-shadow: $boxshadowColorCarte;
+    background-color: #ffff;// couleur du font des menu
+    animation: card-in 1500ms both;
+    &:hover {
+        .menu-card__check { // pour le cocher
+            transform:scaleX(1);// permet d agrandir ou réduire d'échelle de la longueur 
+            margin-right:0px;
+        } 
+        .fa-check {
+            animation:check-in 0.3s ease-in-out;// demarre puis accélère avant de ralentir vers la fin ( check-in 0.3 ease-in-out)
+        }
+    } 
+    
+    &__body {
+        padding: 13px;
+        flex:1;// définit la capacité d'un élément flexible à modifier ses dimensions afin de remplir l'espace disponible de son conteneur.
+        width: 235px;
+        h4 {
+            white-space: nowrap;
+            text-overflow: ellipsis;// les 3 point qui apparaît quand le txt et masque 
+            overflow:hidden;
+            margin-bottom: 5px;
+        }
+    }
+
+    &__description {
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__text {
+        font-size: 15.5px;
+        font-weight:390;
+        flex:1;// est un élément flexible à modifier ses dimensions afin de remplir l'espace disponibles de son conteneur 
+        white-space: nowrap;// définit la manière dont le navigateur va interpréter les espaces blance et les types de caractères 
+        //de retour a la ligne 
+        text-overflow: ellipsis;// pour les 3 point qui apparaît quand le txt et masque 
+        overflow:hidden;
+    }
+
+    &__price {
+        font-size:15.5px;// taille text 
+        font-weight: bold;
+        display:inline-block;
+        margin-right:15px;
+    }
+
+    &__check {
+        width:65px;// la largeur du cocher 
+        @include flexboxCenter;
+        border-radius: 0 20px 20px 0;
+        background-color:$colorTertiary; // la couleur du cocher 
+        margin-right:-80px;
+        transform:scaleX(0);
+        transition: all 0.3s;// permettent de contrôler la vitesse d'animation lorsque les propriétés CSS sont modifiées
+        // on peut l'étaler sur une certaine période.
+    }
+
+    @for $i from 1 through 10 {
+        &--#{$i}{
+            animation-delay: #{$i*300}ms;// permet de spécifier la durée de latence (pause) avant de démarrer une animation
+        }
+    }
+}
+
+.fa-check { 
+    font-size:$fontSizeCheck;
+    border-radius: 50%; // dordure 50% pour etre rond 
+    border:5px solid #ffff;// couleur grand rond 
+    background-color:#ffff;// couleur  petit rond cocher
+    color:$colorTertiary;
+}
+
+@keyframes card-in {
+    0% {
+        transform:translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform:translateY(0px);
+        opacity: 1;
+    }
+  }
+
+  @keyframes check-in {
+    0% {
+       opacity: 0;
+        transform:rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform:rotate(360deg);
+    }
+  }
