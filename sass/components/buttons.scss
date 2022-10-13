@@ -1,0 +1,41 @@
+//heart button
+.fa-heart {
+  font-size: $fontSizeHeart; // taille du coeur
+  transition: background-color 0.5s ease-in-out;//vitesse d'animation
+  height:46px;
+  margin-right:10px;
+  cursor: pointer;
+  //background-size: 100% 0%;
+  //background-position: bottom;
+  &:hover { 
+    background: linear-gradient(175deg,white 0%,white 30%,$colorSecondary,$colorPrimary);
+    color: transparent;
+    -webkit-background-clip :text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    background-position-y: -1rem; // définit la position vertical initiale de chaque image 
+    //background-size: 100% 100%;
+    //clip-path: path("M12 4.419c-2.826-5.695-11.999-4.064-11.999 3.27 0 7.27 9.903 10.938 11.999 15.311 2.096-4.373 12-8.041 12-15.311 0-7.327-9.17-8.972-12-3.27z");
+  }
+}
+
+//hero button
+.hero__btn {
+  border-radius: 200px; // bordure des button explorer page accueil et commande 
+  padding: 17px 28px;
+  background: $gradient;// qui crée un dégradé entre deux couleur 
+  color: white;// coleur txt button
+  filter: brightness(1);
+  transition: all 0.25s;// pour controme la vitesse de$'animation
+  box-shadow: $boxshadowColorHeader;
+  &:hover {
+    filter: brightness(1.1);// brightness est un multiplicateur linéaire sur une image afin de la rendre plus claire ou plus sombre .
+    box-shadow: $boxshadowHeroButtonHover;
+  }
+}
+
+//ordering button
+.ordering-btn {
+  @extend .hero__btn;
+  padding:15px 45px;
+}

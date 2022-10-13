@@ -1,0 +1,40 @@
+.loader {
+    background-color:$backgroundColorBloc;
+    position:fixed;
+    z-index:10;
+    width: 100%;
+    height:100%;
+    
+    display:flex;// pour placer le loader
+    justify-content:center; // pour positionner le loader au centre de la page 
+    align-items:center;
+    animation:fade-in 3s $transitionTimingLoader forwards;// le temps le l'animation du loader 
+    &__ring {    
+       @include ring($height:120px, $width:120px);
+        animation: ring 1s linear infinite;// la vitesse de rotation du loader
+  
+    }
+
+
+  }
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0.9;   
+    }
+    100% {
+        opacity: 0;
+        z-index:-1;
+    }
+  }
+
+@keyframes ring { // rotation inverser
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+        z-index: -1;
+    }
+}

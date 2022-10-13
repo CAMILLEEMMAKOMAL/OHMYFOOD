@@ -1,0 +1,59 @@
+//ring on the loading page
+@mixin ring ($height:120px, $width:120px) {
+    width: 120px; // largeur du laoder
+    height: 120px;// hauteur du laoder
+    padding: 10px;
+    border-radius: 50%; //les angle du loader
+    border: 3px dashed ;// épaisseur bordure et pointillé
+    box-shadow: -2px -2px 2px 2px $colorPrimary,
+                 2px 2px 2px 2px $colorTertiary,
+              inset -2px -2px 2px 2px $colorOperationIcon,// inset la valeur est appliquée à l'ensemble des cotés
+               inset  2px 2px 2px 2px $colorSecondary;
+    
+                
+    border-color:$colorPrimary $colorTertiary $colorSecondary $colorOperationIcon ;// les couleur du loader code couleur 
+
+}
+
+//Green underline on the menu pages
+@mixin greenUnderline ($color:$colorTertiary, $width:$greeenUnderlineWidth){
+&::after {
+    content:"";
+    position:absolute;//L'élément est retiré du flux normal et aucun espace n'est créé pour l'élément sur la page
+    top:24px;
+    left:1px;
+    width: $greeenUnderlineWidth;
+    height: 3px;
+    background-color: $colorTertiary;
+    }
+}
+
+//responsive for mobile
+@mixin mobil-only {
+    @media screen and (max-width: map-get($breakpoints, mobil)){
+     @content;
+    }
+}
+
+//responsive for tablet
+@mixin tablet {
+    @media screen and (min-width: map-get($breakpoints, mobil)) and (max-width:map-get($breakpoints,desktop))
+    {
+     @content;
+    }
+}
+
+//responsive for desktop
+@mixin desktop {
+    @media screen and (min-width: map-get($breakpoints,desktop)){
+     @content;
+    }
+}
+
+//
+
+@mixin flexboxCenter {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
